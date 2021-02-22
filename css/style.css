@@ -1,10 +1,200 @@
-div {
-    border: 1px red ;
-}
-*{
-    cursor: url(../images/cursor.png);
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
 
 
+        * {
+            box-sizing: border-box;
+        }
+
+
+        .openButton {
+            border: none;
+            border-radius: 5px;
+            background-color: #1c87c9;
+            color: black;
+            padding: 14px 20px;
+            cursor: pointer;
+            margin: 10px;
+
+        }
+
+        .container {
+            width: 611px;
+            height: auto;
+            margin: 80px auto 0;
+            position: fixed;
+            left: 45%;
+            top: 25%;
+            transform: translate(-50%, 5%);
+            border: 3px solid #999999;
+            z-index: 9;
+            display: none;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+
+        .part {
+            height: 100%;
+            padding: 48px 40px 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            background-color: #00B0FF;
+            color: white;
+            font-family: 'Montserrat',sans-serif ;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 14px 0 10px 49px;
+            letter-spacing: 1px;
+            margin-left: -52px;
+            width: 330px;
+        }
+
+        .img {
+            max-width: 40%;
+            max-height: 100%;
+            overflow: hidden;
+            background-size: 50%;
+            background-repeat: no-repeat;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+
+
+        }
+
+        form {
+            font-family: 'Work Sans', sans-serif;
+        }
+
+
+        .group {
+            display: block;
+            width: 100%;
+            float: left;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 12px;
+            float: left;
+            width: 100%;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+
+        input {
+            float: left;
+            width: 100%;
+            height: 30px;
+            font-size: 18px;
+            font-family: 'Work Sans', sans-serif;
+            border: 0;
+            color: #263238;
+            border-bottom: 1px solid #d9d9d9;
+
+        }
+
+
+        ::placeholder {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            vertical-align: middle;
+            color: #d9d9d9;
+            text-align: left;
+        }
+
+        :focus {
+
+            outline: none;
+            border-bottom-color: #00b0ff;
+
+        }
+
+
+        .min {
+            float: left;
+            width: 80px;
+            margin-right: 10px;
+        }
+
+        .max {
+            float: left;
+            width: 80px;
+            margin-right: 10px;
+
+        }
+
+        #location {
+            border-bottom: 1px solid #d9d9d9;
+
+            margin-top: 32px;
+        }
+
+        .avg {
+            width: 80px;
+            float: left;
+
+        }
+
+        #avgs {
+            margin-bottom: 0px;
+        }
+
+
+        .submit-group {
+            width: 100%;
+            float: left;
+            position: relative;
+        }
+
+        .submit {
+            text-transform: uppercase;
+            position: relative;
+            border: none;
+            background-color: transparent;
+            font-size: 12px;
+            line-height: 21px;
+            letter-spacing: 1.4px;
+            color: #263238;
+
+            cursor: pointer;
+            align-items: center;
+        }
+
+        .cancel {
+            text-transform: uppercase;
+            position: relative;
+            border: none;
+            background-color: transparent;
+            font-size: 12px;
+            line-height: 21px;
+            letter-spacing: 1.4px;
+            color: #263238;
+            margin-left: 35%;
+            cursor: pointer;
+
+        }
+
+        .submit:focus {
+            outline: none;
+        }
+
+        .submit:hover {
+            text-decoration: underline;
+            color: seagreen;
+        }
+
+        .cancel:focus {
+            outline: none;
+        }
+
+        .cancel:hover {
+            text-decoration: underline;
+            color: red;
+        }
 
