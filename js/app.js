@@ -2,7 +2,7 @@
 
 
 
-  
+
 
 
 
@@ -34,9 +34,10 @@ let rightImageIndex;
 let maxAttempts = 25;
 let attempts = 0;
 let productNames = [];
-let productVotes = [];
-let productShows = [];
-Product.allProducts = [];
+let productVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let productShows = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let ctx = document.getElementById('myChart').getContext('2d');
+
 
 
 function Product(name, source) {
@@ -50,6 +51,7 @@ function Product(name, source) {
 
 }
 
+Product.allProducts = [];
 
 new Product('bag', 'images/bag.jpg');
 new Product('banana', 'images/banana.jpg');
@@ -71,6 +73,49 @@ new Product('unicorn', 'images/unicorn.jpg');
 new Product('usb', 'images/usb.gif');
 new Product('water-can', 'images/water-can.jpg');
 new Product('wine-glass', 'images/wine-glass.jpg');
+
+
+
+
+
+
+
+function setter() {
+  let data = JSON.stringify(Product.allProducts);
+  localStorage.setItem('products', data);
+}
+
+function getter() {
+
+  let stringObject = localStorage.getItem('products');
+  let ob = JSON.parse(stringObject);
+
+  if (ob !== null) {
+
+    Product.allProducts = ob;
+
+
+    for (let i = 0; i < ob.length; i++) {
+      productShows[i] += parseInt(Product.allProducts[i].shows);
+      productVotes[i] += parseInt(Product.allProducts[i].votes);
+    }
+    renderChart();
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function generateRandomIndex() {
   return Math.floor(Math.random() * Product.allProducts.length);
@@ -100,9 +145,9 @@ function renderThreeImages() {
           leftImageIndex = generateRandomIndex();
           middleImageIndex = generateRandomIndex();
           rightImageIndex = generateRandomIndex();
-      
-      
-      
+
+
+
         } while ((leftImageIndex === rightImageIndex) || (leftImageIndex === middleImageIndex) || (rightImageIndex === middleImageIndex))
       }
 
@@ -180,11 +225,14 @@ function handleUserClick(event) {
     rightImageElement.removeEventListener('click', handleUserClick);
 
     for (let i = 0; i < Product.allProducts.length; i++) {
-      productShows[i] = Product.allProducts[i].shows;
-      productVotes[i] = Product.allProducts[i].votes;
-      
+      productShows[i] += parseInt(Product.allProducts[i].shows);
+      productVotes[i] += parseInt(Product.allProducts[i].votes);
+
     }
 
+    setter();
+    console.log(productShows[0]);
+    console.log(productVotes[0]);
     renderChart();
 
   }
@@ -192,7 +240,14 @@ function handleUserClick(event) {
 
 
 function renderChart() {
-  let ctx = document.getElementById('myChart').getContext('2d');
+  
+  ctx.id = 'chart';
+  let div = document.getElementById('divChart');
+  ctx = document.getElementById('myChart').getContext('2d');
+  
+  
+  
+
 
   let chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -211,14 +266,14 @@ function renderChart() {
           borderColor: '#1e212d',
           data: productVotes
         },
-        
+
         {
           label: 'Product shown',
           backgroundColor: 'red',
           borderColor: 'red',
           data: productShows
         },
-   
+
 
       ]
     },
@@ -230,3 +285,4 @@ function renderChart() {
 }
 
 
+getter();

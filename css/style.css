@@ -8,6 +8,15 @@
         }
 
 
+
+#chart{
+
+    display: none;
+}
+
+
+
+
         .openButton {
             border: none;
             border-radius: 5px;
